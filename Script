@@ -76,7 +76,7 @@ engine.on('game_starting', function(info) {
       newBaseSatoshi = newBaseBet * 100;
 
       if ((newBaseBet != baseBet) || (newBaseBet == 1)) {
-      console.log('\u001b[1m','배팅금액 변경: ' + newBaseBet + ' bits');
+      console.warn('배팅금액 변경: ' + newBaseBet + ' bits');
       baseBet = newBaseBet;
       baseSatoshi = newBaseSatoshi;
       }
@@ -122,5 +122,5 @@ engine.on('cashed_out', function(data) {
 });
 
 engine.on('game_crash', function(data) {
-    if (!firstGame) { console.log('\u001b[31m','[봇]' + (data.game_crash / 100) + 'x' + '에서 깨짐'); }
+    if (!firstGame) { console.error('[봇]' + (data.game_crash / 100) + 'x' + '에서 깨짐'); }
 });
