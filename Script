@@ -2,8 +2,8 @@
 var baseBet = 10; // In bits
 var baseMultiplier = 2; // Target multiplier: 1.13 recommended
 var variableBase = true; // Enable variable mode (very experimental), read streakSecurity.
-var streakSecurity = 3; // Number of loss-streak you wanna be safe for. Increasing this massively reduces the variableBase calculated. (1-loss = 20%, 2-loss = 5%, 3-loss = 1.25% of your maximum balance). Recommended: 2+
-var maximumBet = 바꾸세요; // Maximum bet the bot will do (in bits).
+var streakSecurity = 4; // Number of loss-streak you wanna be safe for. Increasing this massively reduces the variableBase calculated. (1-loss = 20%, 2-loss = 5%, 3-loss = 1.25% of your maximum balance). Recommended: 2+
+var maximumBet = 90000; // Maximum bet the bot will do (in bits).
 
 // Variables - Do not touch!
 var baseSatoshi = baseBet * 100; // Calculated
@@ -36,13 +36,13 @@ engine.on('game_starting', function(info) {
       }
       else {
       lossStreak--;
-      console.log('[Bot] Cooling down! Games remaining: ' + lossStreak);
+      console.log('[봇] 쉬어야함 이만큼짐 : ' + lossStreak);
       return;
       }
       }
 
       if (!firstGame) { // Display data only after first game played.
-      console.log('[통계] 세션수익: ' + ((engine.getBalance() - startingBalance) / 100).toFixed(2) + ' bits');
+      console.log('[통계] 이번판 수익: ' + ((engine.getBalance() - startingBalance) / 100).toFixed(2) + ' bits');
       console.log('[통계] 수익률: ' + (((engine.getBalance() / startingBalance) - 1) * 100).toFixed(2) + '%');
       }
 
@@ -87,7 +87,7 @@ engine.on('game_starting', function(info) {
       }
 
       // Message and set first game to false to be sure.
-      console.log('[Bot] Betting ' + (currentBet / 100) + ' bits, cashing out at ' + currentMultiplier + 'x');
+      console.log('[Bot] 배팅금액:  ' + (currentBet / 100) + ' bits, 배팅배율 : ' + currentMultiplier + 'x');
       firstGame = false;
 
       if (currentBet <= engine.getBalance()) { // Ensure we have enough to bet
@@ -122,5 +122,5 @@ engine.on('cashed_out', function(data) {
 });
 
 engine.on('game_crash', function(data) {
-    if (!firstGame) { console.log('[봇]' + (data.game_crash / 100) + 'x' + '에서 깨짐'); }
+    if (!firstGame) { console.log('\u001b[31m','[봇]' + (data.game_crash / 100) + 'x' + '에서 깨짐'); }
 });
