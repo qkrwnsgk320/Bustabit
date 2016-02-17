@@ -41,10 +41,6 @@ engine.on('game_starting', function(info) {
       }
       }
 
-      if (!firstGame) { // Display data only after first game played.
-      console.log('[통계] 총 수익: ' + ((engine.getBalance() - startingBalance) / 100).toFixed(2) + ' bits');
-      console.log('[통계] 수익률: ' + (((engine.getBalance() / startingBalance) - 1) * 100).toFixed(2) + '%');
-      }
 
       if (engine.lastGamePlay() == 'LOST' && !firstGame) { // If last game loss:
       lossStreak++;
@@ -117,10 +113,15 @@ engine.on('game_started', function(data) {
 
 engine.on('cashed_out', function(data) {
     if (data.username == engine.getUsername()) {      
-      console.lnfo('성공적 캐쉬아웃: ' + (data.stopped_at / 100) + 'x');
+      console.lnfo('[봇] 성공적 캐쉬아웃: ' + (data.stopped_at / 100) + 'x');
       }
 });
 
 engine.on('game_crash', function(data) {
     if (!firstGame) { console.error('[봇]' + (data.game_crash / 100) + 'x' + '에서 깨짐'); console.log(); }
+    
+    if (!firstGame) { // Display data only after first game played.
+      console.log('[통계] 총 수익: ' + ((engine.getBalance() - startingBalance) / 100).toFixed(2) + ' bits');
+      console.log('[통계] 수익률: ' + (((engine.getBalance() / startingBalance) - 1) * 100).toFixed(2) + '%');
+      }
 });
