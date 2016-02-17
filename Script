@@ -1,6 +1,6 @@
 // Settings
 var baseBet = 10; // In bits
-var baseMultiplier = 1.13; // Target multiplier: 1.13 recommended
+var baseMultiplier = 2; // Target multiplier: 1.13 recommended
 var variableBase = true; // Enable variable mode (very experimental), read streakSecurity.
 var streakSecurity = 3; // Number of loss-streak you wanna be safe for. Increasing this massively reduces the variableBase calculated. (1-loss = 20%, 2-loss = 5%, 3-loss = 1.25% of your maximum balance). Recommended: 2+
 var maximumBet = 바꾸세요; // Maximum bet the bot will do (in bits).
@@ -60,7 +60,7 @@ engine.on('game_starting', function(info) {
       return;
       }
 
-      currentBet *= 4; // Then multiply base bet by 4!
+      currentBet *= 6; // Then multiply base bet by 4!
       currentMultiplier = 1 + (totalLosses / currentBet);
       }
       else { // Otherwise if win or first game:
