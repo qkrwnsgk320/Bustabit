@@ -15,9 +15,9 @@ var lossStreak = 0;
 var coolingDown = false;
 
 // Initialization
-console.log('====== Procon\'s BustaBit Bot ======');
-console.log('My username is: ' + engine.getUsername());
-console.log('Starting balance: ' + (engine.getBalance() / 100).toFixed(2) + ' bits');
+console.log('====== Bustabit Bot======');
+console.log('아이디: ' + engine.getUsername());
+console.log('자본: ' + (engine.getBalance() / 100).toFixed(2) + ' bits');
 var startingBalance = engine.getBalance();
 
 if (variableBase) {
@@ -76,7 +76,7 @@ engine.on('game_starting', function(info) {
       newBaseSatoshi = newBaseBet * 100;
 
       if ((newBaseBet != baseBet) || (newBaseBet == 1)) {
-      console.log('[Bot] Variable mode has changed base bet to: ' + newBaseBet + ' bits');
+      console.log('\u001b[1m','배팅금액 변경: ' + newBaseBet + ' bits');
       baseBet = newBaseBet;
       baseSatoshi = newBaseSatoshi;
       }
