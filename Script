@@ -42,7 +42,7 @@ engine.on('game_starting', function(info) {
       }
 
       if (!firstGame) { // Display data only after first game played.
-      console.log('[통계] 이번판 수익: ' + ((engine.getBalance() - startingBalance) / 100).toFixed(2) + ' bits');
+      console.log('[통계] 총 수익: ' + ((engine.getBalance() - startingBalance) / 100).toFixed(2) + ' bits');
       console.log('[통계] 수익률: ' + (((engine.getBalance() / startingBalance) - 1) * 100).toFixed(2) + '%');
       }
 
