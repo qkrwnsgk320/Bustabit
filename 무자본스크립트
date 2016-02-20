@@ -3,7 +3,7 @@ var baseBet = 10; // In bits
 var baseMultiplier = 1.13; // Target multiplier: 1.13 recommended
 var variableBase = true; // Enable variable mode (very experimental), read streakSecurity.
 var streakSecurity = 4; // Number of loss-streak you wanna be safe for. Increasing this massively reduces the variableBase calculated. (1-loss = 20%, 2-loss = 5%, 3-loss = 1.25% of your maximum balance). Recommended: 2+
-var maximumBet = 90000; // Maximum bet the bot will do (in bits).
+var maximumBet = 4; // Maximum bet the bot will do (in bits).
 
 // Variables - Do not touch!
 var baseSatoshi = baseBet * 100; // Calculated
@@ -11,7 +11,7 @@ var currentBet = baseSatoshi;
 var currentMultiplier = baseMultiplier;
 var currentGameID = -1;
 var firstGame = true;
-var lossStreak = 0;
+var lossStreak = 2;
 var coolingDown = false;
 
 // Initialization
